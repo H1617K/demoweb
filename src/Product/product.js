@@ -9,7 +9,7 @@ const Product = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://api.escuelajs.co/api/v1/products?offset=${(page - 1) * 10}&limit=10`);
+        const response = await fetch(`https://api.escuelajs.co/api/v1/products?offset=${(page - 1) * 10}&limit=5`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -36,6 +36,7 @@ const Product = () => {
             <span className="product-title">{product.title}</span>
             <img className="product-image" src={product.images} alt='Imgs' />
             - <span className="product-price">${product.price}</span> 
+            <span className='product-decripction'>{product.description}</span>
             {/* <span className="category-name">{product.category.name}</span> 
             <img className="category-image" src={product.category.image} alt='categoryimg' /> */}
           </li>
