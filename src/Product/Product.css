@@ -63,7 +63,9 @@
   .category-image {
     max-width: 100px;
     height: auto;
-    margin-right: 10px;
+    margin: 0 auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
   }
   
   .css-1oj2twp-MuiPagination-root {
