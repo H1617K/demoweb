@@ -35,8 +35,8 @@
 }
 
 .product-image {
-  max-width: 100px; /* Consider adjusting if needed */
-  height: auto;
+  max-width: 300px;
+  height: 270px;
   margin: 0 auto;
   margin-bottom: 2%;
   margin-top: 2%;
