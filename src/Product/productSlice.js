@@ -1,15 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async (page) => {
+  async (page, thunkAPI) => {
+    console.log("page is", page);
     try {
-      const response = await fetch(`https://api.escuelajs.co/api/v1/products?offset=${(page - 1) * 10}&limit=6`);
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      const data = await response.json();
-      return data;
+      const response = await axios.get(`https://api.escuelajs.co/api/v1/products`, {
+        params: {
+          offset: (page - 1) * 10,
+          limit: 6
+        }
+      });
+      return response.data;
     } catch (error) {
       throw error;
     }
@@ -19,11 +22,16 @@ export const fetchProducts = createAsyncThunk(
 const productSlice = createSlice({
   name: 'products',
   initialState: {
+    page: 1,
     products: [],
     status: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -39,5 +47,7 @@ const productSlice = createSlice({
       });
   }
 });
+
+export const { setPage } = productSlice.actions;
 
 export default productSlice.reducer;

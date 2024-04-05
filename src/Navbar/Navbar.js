@@ -16,7 +16,7 @@ const Navbar = () => {
             <Link className="nav-link" to="/Product">Product <span className="sr-only">(current)</span></Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link ">Cart</Link>
+            <Link className="nav-link "to="/Cart">Cart</Link>
           </li>
         </ul>
       </div>
